@@ -1,42 +1,383 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.app {
+  width: 100%;
+  max-width: 900px;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.appHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.appTopBar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.appTopBarTitle {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.appHeaderActions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.appTitle {
+  margin: 0;
+  font-size: 32px;
+  line-height: 1.2;
+}
+
+.appSubTitle {
+  margin: 0;
+  color: #555;
+  overflow-wrap: anywhere;
+}
+
+.appCode {
+  font-size: 0.95em;
+}
+
+.appError {
+  background: #ffe8e8;
+  border: 1px solid #ffcccc;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 60px 16px 16px;
+  z-index: 50;
+}
+
+.modalPanel {
+  width: 100%;
+  max-width: 720px;
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  padding: 14px;
+  outline: none;
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.modalTitle {
+  margin: 0;
+  font-size: 18px;
+}
+
+.modalBody {
+  display: grid;
+  gap: 10px;
+}
+
+.confirmDesc {
+  margin: 0;
+  color: #444;
+}
+
+.confirmActions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.taskForm {
+  display: grid;
+  gap: 10px;
+}
+
+.taskFormRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.taskLabel {
+  display: grid;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.dueAtRow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.dueAtQuick {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.taskField {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background: #fff;
+  color: inherit;
+}
+
+.taskFormActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.taskButton {
+  padding: 10px 14px;
+  border-radius: 10px;
+}
+
+.taskButtonSmall {
+  padding: 6px 10px;
+  border-radius: 10px;
+}
+
+.taskButtonPrimary {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.taskButtonDanger {
+  background: #7a1212;
+  color: #fff;
+  border-color: transparent;
+}
+
+.taskButtonRight {
+  margin-left: auto;
+}
+
+.taskList {
+  border-top: 1px solid #eee;
+  padding-top: 12px;
+}
+
+.taskCards {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.taskCard {
+  border: 1px solid #eee;
+  border-radius: 12px;
+  background: #fff;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.taskCardTop {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.taskCardTitleWrap {
+  flex: 1;
+  min-width: 0;
+}
+
+.taskCardTitleRow {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.taskCardTitle {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.taskCardDesc {
+  margin: 6px 0 0;
+  color: #444;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.taskCardActions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.taskMeta {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px 12px;
+}
+
+.taskMetaItem {
+  min-width: 0;
+}
+
+.taskMetaItem dt {
+  font-size: 12px;
+  color: #666;
+}
+
+.taskMetaItem dd {
+  margin: 2px 0 0;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.taskStatus {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.taskStatus--todo {
+  background: #eef2ff;
+  border-color: #dbe3ff;
+  color: #1f2a55;
+}
+
+.taskStatus--in_progress {
+  background: #fff4e5;
+  border-color: #ffe1b2;
+  color: #5a3b08;
+}
+
+.taskStatus--done {
+  background: #e6ffed;
+  border-color: #b8f2c9;
+  color: #0c3a1a;
+}
+
+@media (max-width: 520px) {
+  .taskFormRow {
+    grid-template-columns: 1fr;
   }
-  to {
-    transform: rotate(360deg);
+  .appTopBar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .appHeaderActions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .dueAtRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .dueAtQuick {
+    justify-content: flex-start;
+  }
+  .taskButtonRight {
+    margin-left: 0;
+  }
+  .appTitle {
+    font-size: 26px;
+  }
+  .taskCardTop {
+    flex-direction: column;
+  }
+  .taskCardActions {
+    width: 100%;
+  }
+  .taskMeta {
+    grid-template-columns: 1fr;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@media (prefers-color-scheme: dark) {
+  .appSubTitle {
+    color: rgba(255, 255, 255, 0.7);
   }
-}
 
-.card {
-  padding: 2em;
-}
+  .modalPanel {
+    background: #1a1a1a;
+    border-color: #3a3a3a;
+  }
 
-.read-the-docs {
-  color: #888;
+  .confirmDesc {
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .taskField {
+    background: #1a1a1a;
+    border-color: #3a3a3a;
+  }
+
+  .taskCard {
+    background: #1a1a1a;
+    border-color: #3a3a3a;
+  }
+
+  .taskCardDesc {
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .taskMetaItem dt {
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  .taskStatus--todo {
+    background: rgba(100, 108, 255, 0.16);
+    border-color: rgba(100, 108, 255, 0.4);
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .taskStatus--in_progress {
+    background: rgba(255, 179, 71, 0.18);
+    border-color: rgba(255, 179, 71, 0.45);
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .taskStatus--done {
+    background: rgba(46, 204, 113, 0.16);
+    border-color: rgba(46, 204, 113, 0.4);
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .taskList {
+    border-top-color: #3a3a3a;
+  }
 }
