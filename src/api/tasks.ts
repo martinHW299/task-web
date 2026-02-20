@@ -11,6 +11,7 @@ function unwrap<T>(res: T | Resource<T>): T {
 
 export async function listTasks(): Promise<Task[]> {
     const { data } = await api.get<Task[] | Resource<Task[]>>("/tasks");
+    console.log("API response for listTasks:", api.getUri(), data);
     return unwrap(data);
 }
 
